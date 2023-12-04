@@ -1,39 +1,51 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Fontawesome5 from 'react-native-vector-icons/FontAwesome5';
 import Portofolio from '../App'
 import { WebView } from 'react-native-webview';
 import Getjsonfile from '../Getjsonfile';
+import Pura from '../Pura'
 
 const Tab = createBottomTabNavigator();
 
 //Form Input dari github pages
-const forminput = 'https://ganispermata.github.io/pgpbl-12/';
+const forminput = 'https://jasminecantika.github.io/Pura-Bali/';
 
 //Peta web dari github pages
-const webmap = 'https://ganispermata.github.io/pgpbl-12/map.html';
+const webmap = 'https://jasminecantika.github.io/Pura-Bali/map.html';
 
 function HomeScreen() {
   return (
-    <View>
-        <Text style={styles.title}>APLIKASI PETA LOKASI OBJEK</Text>
-        <Text style={{textAlign:'center'}}>Aplikasi ini memberikan kemudahan bagi pengguna untuk melakukan pemetaan pada jenis objek dengan tren atau topik tertentu</Text>
-        <View style={styles.container}>
-        <Text>Stack:</Text>
-        <Text>1. React Native</Text>
-        <Text>2. HTML</Text>
-        <Text>3. LeafletJS</Text>
-        <Text>4. Google Sheets</Text>
-        <Text>5. App Script</Text>
-        <Text>6. FontAwesome5</Text>
-        <Text>7. GitHub</Text>
-        </View>
-    </View>
+    <ImageBackground source={require('../peta/bg.jpg')}>
+    <ScrollView> 
+            <Text style={styles.title}>APLIKASI PETA LOKASI PURA</Text> 
+            <Text style={styles.description}> Provinsi Bali</Text> 
+            <View style={styles.container}>  
+            <Image style={styles.image} 
+        source={require('AwesomeProject/peta/pura.png')}/> 
+            </View> 
+            <View style={styles.container}>  
+            <Text style={{textAlign: 'justify',color:'#1B3D6C', margin: 20}}>
+            Pura merupakan tempat untuk melaksanakan upacara-upacara keagamaan, seperti pemujaan dewa-dewi Hindu, ritual penyucian, dan perayaan keagamaan seperti Galungan dan Kuningan. Pentingnya pura tidak hanya terletak pada fungsi keagamaan, tetapi juga sebagai pusat kegiatan budaya dan sosial masyarakat Bali. Pura menjadi tempat berkumpulnya komunitas, tempat untuk menyelenggarakan pertunjukan seni dan tarian, serta sebagai pusat kegiatan sosial yang mempererat ikatan antarwarga. Pada momen-momen tertentu, seperti perayaan piodalan (ulang tahun pura), pura dihiasi dengan hiasan-hiasan khas, dan masyarakat lokal berkumpul untuk merayakan bersama. Secara keseluruhan, pura bukan hanya sebagai bangunan fisik, melainkan juga sebagai simbol keberagaman, spiritualitas, dan warisan budaya yang dijunjung tinggi oleh masyarakat Hindu Bali.</Text> 
+            </View> 
+            <View style={styles.container}>  
+            <Text> Stack:</Text> 
+            <Text> 1. React Native</Text> 
+            <Text> 2. HTML</Text> 
+            <Text> 3. LeafletJS</Text> 
+            <Text> 4. Google Sheets</Text> 
+            <Text> 5. App Script</Text> 
+            <Text> 6. FontAwesome5</Text> 
+            <Text> 7. Github</Text> 
+            </View> 
+        </ScrollView>
+        </ImageBackground>
   );
 
 }
+
 function MapScreen() {
   return (
     <WebView
@@ -57,10 +69,18 @@ function ProfileScreen() {
   );
 }
 
+function ListScreen() {
+  return (
+    <View>
+      <Pura />
+    </View>
+  );
+}
+
 function MyTabs() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}  >
+      <Tab.Navigator screenOptions={{ headerShown: false,
+      tabBarStyle: {backgroundColor: '#31304D', marginBottom: 10, marginRight: 10, marginLeft:10, borderRadius: 40}, }}  >
         <Tab.Screen name="Home" component={HomeScreen} options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
@@ -82,6 +102,13 @@ function MyTabs() {
           ),
         }}
         />
+        <Tab.Screen name="Pura" component={ListScreen} options={{
+          tabBarLabel: 'Pura',
+          tabBarIcon: ({ color, size }) => (
+            <Fontawesome5 name="th-list" color={color} size={size} />
+          ),
+        }}
+        />
         <Tab.Screen name="Profile" component={ProfileScreen} options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color, size }) => (
@@ -89,8 +116,8 @@ function MyTabs() {
           ),
         }}
         />
+
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }
 
@@ -120,6 +147,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     backgroundColor: '#ECF9FF',
     marginTop: 20,
-    padding: 20,
-  }
+    padding:20,
+}
 });

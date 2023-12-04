@@ -82,10 +82,10 @@ function App(): JSX.Element {
             Departemen Teknologi Kebumian
           </Section>
           <Section title="Class">A</Section>
-          <Section title="About ganis">Saya adalah seorang mahasiswa semester 5 yang sedang berkuliah di Universitas Gadjah Mada. </Section>
+          <Section title="About Jasmine">Saya adalah seorang mahasiswa semester 5 yang sedang berkuliah di Universitas Gadjah Mada. </Section>
           <Section title="Sosial media">Instagram: jasminecarriza</Section>
           <Section title="Qoutes">
-          If you want to live a happy life, tie it to a goal, not to people or things
+          Don't follow your dream, Follow my instagram
           </Section>
 
           <LearnMoreLinks />
